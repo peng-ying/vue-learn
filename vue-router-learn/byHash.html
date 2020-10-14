@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hash实现前端路由</title>
+</head>
+<body>
+  <ul>
+    <!-- 定义路由 -->
+    <li><a href="#/home">home</a></li>
+    <li><a href="#/about">about</a></li>
+
+    <!-- 渲染路由对应的 UI -->
+    <div id="routeView"></div>
+  </ul>
+
+  <script>
+    let routerView = document.getElementById('routeView');
+    console.log(routerView, 'routerView')
+    window.addEventListener('hashchange', function (event) {
+      let hash = location.hash;
+      routerView.innerHTML = hash;
+    })
+
+
+    // 监听页面加载事件是因为第一次加载页面完时不会触发hashchange事件，所以需要监听
+    window.addEventListener('DOMContentLoaded', function(event) {
+      if(!location.hash) {
+        // 不存在hash值，重定向到根路径
+        location.hash = '/'
+      } else {
+        // 当前是存在hash值的
+        let hash = location.hash;
+        routerView.innerHTML = hash;
+      }
+    })
+  </script>
+</body>
+</html>

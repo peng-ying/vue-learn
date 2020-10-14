@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>history实现前端路由</title>
+</head>
+<body>
+  <ul>
+    <!-- 定义路由 -->
+    <li><a href="/home">home</a></li>
+    <li><a href="/about">about</a></li>
+    <li><a>1111</a></li>
+
+    <!-- 渲染路由对应的 UI -->
+    <div id="routeView"></div>
+  </ul>
+
+  
+  <script>
+    let routerView = document.getElementById('routeView');
+    console.log(location, 'location');
+    window.addEventListener('DOMContentLoaded', function(event) {
+      routerView.innerHTML = location.pathname;
+      let linkList = document.querySelectorAll('a[href]');
+      linkList.forEach(element => {
+        element.addEventListener('click', function(event) {
+          // 阻止默认行为
+          event.preventDefault();
+          history.pushState(history.state, '', element.getAttribute('href'));
+          routerView.innerHTML = location.pathname
+        })
+      });
+    })
+  </script>
+</body>
+</html>
