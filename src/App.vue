@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
+    <!-- <h1>hello world!</h1> -->
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component({
+  name: 'app'
+})
+export default class extends Vue {
+  private created() {
+    console.log('app页面生成了')
+  }
+}
+</script>
 
 <style>
 #app {
@@ -15,6 +29,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100%;
+  height: 100%;
 }
 
 #nav {
