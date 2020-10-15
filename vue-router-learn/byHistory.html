@@ -27,7 +27,13 @@
         element.addEventListener('click', function(event) {
           // 阻止默认行为
           event.preventDefault();
-          history.pushState(history.state, '', element.getAttribute('href'));
+          // url可以接受绝对地址和相对地址，设置绝对地址的时候，要保证域名和当前域名一致，否则汇报如下错误
+          /**
+           * byHistory.html:30 Uncaught DOMException: Failed to execute 'pushState' on 'History': A history state object with URL 'file:///F:/home' cannot be created in a document with origin 'null' and URL 'file:///F:/pengying/mytest/vue-learn/vue-router-learn/byHistory.html'.
+            at HTMLAnchorElement.<anonymous> (file:///F:/pengying/mytest/vue-learn/vue-router-learn/byHistory.html:30:26)
+          */
+          console.log(element.getAttribute('href'))
+          window.history.pushState({name: 'pengying'}, '', location.origin + element.getAttribute('href'));
           routerView.innerHTML = location.pathname
         })
       });
