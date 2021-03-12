@@ -2,7 +2,7 @@ import service from '../http/service'
 
 interface userParams {
   username?: string,
-  password: string
+  password?: string
 }
 
 export const userLogin = (params: userParams) => {
