@@ -56,3 +56,11 @@ app.options('/api/*', function(req, res, next){
 
 
 module.exports = app;
+
+
+
+// app.js 应用初始化文件，包括引入所有应用的依赖项、设置视图模板引擎、静态资源路径、引入路由、配置中间件等
+// bin/www 启动文件，设置监听端口、启动http服务等
+// public 静态文件目录
+// routes 路由文件，响应用户的http请求并返回结果
+// views 视图文件
