@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue 源码解读</title>
+</head>
+<body>
+  <div id="app">
+    {{ msg }}
+  </div>
+  <script src="../dist/vue.js"></script>
+  <script>
+    debugger
+    // Vue.mixin({
+    //   created() {
+    //     console.log("我是全局混入");
+    //   },
+    // });
+
+    const mixFunction = {
+      created() {
+        console.log("我是全局混入");
+      },
+      methods: {
+        callName() {
+          console.log('混入的方法')
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello vue'
+      },
+      mixins: [mixFunction],
+      created() {
+        console.log("我是自己的");
+      },
+    })
+  </script>
+</body>
+</html>
